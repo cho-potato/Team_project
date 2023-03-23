@@ -25,11 +25,7 @@
 	<!-- Navbar Start 카테고리부분-->
 	<%@ include file="../inc/gardener/inc/navbar_link.jsp"%>
 	<!-- Navbar End -->
-	<style>
-	.blockwidth {
-		display:inline-block;
-	}
-	</style>
+
 </head>
 
 <body class="" style="">
@@ -178,39 +174,8 @@
 												        <div class="input-group input-group-merge">
 												            <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-buildings"></i></span>
 												            <input type="text" id="basic-icon-default-company" class="form-control" placeholder="ACME Inc." aria-label="ACME Inc." aria-describedby="basic-icon-default-company2">
-                                                            <!-- Small Modal -->
-                                                            <div class="col-md-2">
-                                                                <div class="modal fade" id="smallModalArea" tabindex="-1" style="display: none;" aria-hidden="true">
-                                                                    <div class="modal-dialog modal-sm" role="document">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title" id="exampleModalLabel2">활동명 변경</h5>
-                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <div class="row">
-                                                                                    <div class="col mb-3">
-                                                                                        <label for="nameSmall" class="form-label">기존</label>
-                                                                                        <input type="text" class="form-control" placeholder="Enter Name">
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row g-2">
-                                                                                    <div class="col mb-0">
-                                                                                        <label class="form-label"
-                                                                                            for="emailSmall">변경</label>
-                                                                                        <input type="text" class="form-control" placeholder="Enter Name">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-primary">변경 저장</button>
-                                                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">닫기</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="demo-inline-spacing">
-                                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#smallModalArea" style="float:right;"> 관리 </button>
+                                                                <div>
+                                                                    <button type="button" class="btn btn-primary" style="float:right;" id="bt_mapButton"> 관리 </button>
                                                                 </div>
                                                             </div>
                                                             <!-- Small Modal -->
@@ -286,9 +251,31 @@
                                 		<div class="col-md-8">
                                 			<div class="col">
 												<div class="form-check form-switch">
-                                				<h3>자격사항 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#smallModalLicense"> 관리 </button>
+                                				<h4>자격사항 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#smallModalLicense"> 관리 </button>
                                 				<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked=""  style="float:right;">
-                                				</h3>
+                                				</h4>
+                                				
+<div class="card">
+<div class="table-responsive text-nowrap">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>종류</th>
+        <th>취득일</th>
+      </tr>
+    </thead>
+    <tbody class="table-border-bottom-0">
+      <tr>
+        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong></td>
+        <td>Albert Cook</td>
+        <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+                                				
                                                             <!-- Small Modal -->
                                                             <div class="col-md-2">
                                                                 <div class="modal fade" id="smallModalLicense" tabindex="-1" style="display: none;" aria-hidden="true">
@@ -327,9 +314,31 @@
                                 		<!-- 자격사항 -->
                                 			<div class="col">
 												<div class="form-check form-switch">
-                                				<h3>이력사항 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalScrollableResume"> 관리 </button>
+                                				<h4>이력사항 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalScrollableResume"> 관리 </button>
                                 				<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked=""  style="float:right;">
-                                				</h3>
+                                				</h4>
+                                				
+<div class="card">
+<div class="table-responsive text-nowrap">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>종류</th>
+        <th>취득일</th>
+      </tr>
+    </thead>
+    <tbody class="table-border-bottom-0">
+      <tr>
+        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong></td>
+        <td>Albert Cook</td>
+        <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+                                				
                                                     <!-- Scroll Modal -->
 													<div class="modal fade" id="modalScrollableResume" tabindex="-1" style="display: none;" aria-hidden="true">
 													    <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -354,9 +363,31 @@
                                 			</div>
                                 			<div class="col">
 												<div class="form-check form-switch">
-                                				<h3>경력사항 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#smallModalLicense"> 관리 </button>
+                                				<h4>경력사항 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#smallModalLicense"> 관리 </button>
                                 				<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked=""  style="float:right;">
-                                				</h3>
+                                				</h4>
+                                				
+<div class="card">
+<div class="table-responsive text-nowrap">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>종류</th>
+        <th>취득일</th>
+      </tr>
+    </thead>
+    <tbody class="table-border-bottom-0">
+      <tr>
+        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong></td>
+        <td>Albert Cook</td>
+        <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+                                				
                                                             <!-- Small Modal -->
                                                             <div class="col-md-2">
                                                                 <div class="modal fade" id="smallModalLicense" tabindex="-1" style="display: none;" aria-hidden="true">
@@ -420,5 +451,18 @@
 <!-- Back to Top -->
 <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
 </body>
+<script type="text/javascript">
+/*
+$(function() {
+	$("#bt_mapButton").click(function(){
+		location.href="/sitter/location";
+	});
+});
+
+*/
+</script>
+
+
+
 
 </html>

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class ClientController {
+public class SitterController {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -68,6 +68,12 @@ public class ClientController {
 	public ModelAndView getSitterBalance(HttpServletRequest request) {
 		
 		ModelAndView mav = new ModelAndView("wepet/client/page/sitter_balance");
+		return mav;
+	}
+	@GetMapping("/sitter/location")
+	public ModelAndView getSitterLocation(HttpServletRequest request) {
+		
+		ModelAndView mav = new ModelAndView("wepet/client/page/map_page");
 		return mav;
 	}
 }

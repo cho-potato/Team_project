@@ -4,9 +4,11 @@
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
 	
 	
 	xsi:schemaLocation="
+		http://www.springframework.org/schema/websocket https://www.springframework.org/schema/websocket/spring-websocket.xsd
 		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
@@ -129,6 +131,37 @@
 	 	<!-- 3) 토큰을 통한, 회원정보 요청을 위한 url  -->
 	 	<beans:property name="userinfo_url" value="https://openapi.naver.com/v1/nid/me"/>
  
+
  </beans:bean>
+ <!-- 
+ 		 <beans:bean id="echoHandler" class="com.edu.wepet.chat.EchoHandler"/>
+		
+		<websocket:handlers>
+			<websocket:mapping handler="echoHandler" path="/echo"/>
+			<websocket:sockjs/>
+		</websocket:handlers>
+ -->
+
+	<!-- WebSocket -->
+	 <!--
+	<websocket:handlers>
+		<websocket:mapping handler="echoHandler" path="/echo"/>
+        <websocket:handshake-interceptors>
+                <beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+        </websocket:handshake-interceptors>
+	</websocket:handlers>
+	<beans:bean id="echoHandler" class="com.edu.wepet.chat.WebSocketHandler"/>
+	  -->	
+	<!-- WebSocket -->
+
+<!-- 
+<beans:bean id="myHandler" class="com.edu.wepet.chat.WebSocketHandler"/>	
+	<websocket:handlers>
+		<websocket:mapping path="/chat" handler="myHandler"/>	
+	</websocket:handlers>
+-->
+		<!-- aop
+		<aop:aspectj-autoproxy/>
+		aop -->
 	
 </beans:beans>

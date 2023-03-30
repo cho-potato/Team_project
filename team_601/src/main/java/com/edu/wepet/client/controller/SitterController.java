@@ -1,17 +1,30 @@
 package com.edu.wepet.client.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.edu.wepet.model.petmain.PetMainService;
+import com.edu.wepet.model.sitter.SitterDiaryService;
 
 @Controller
 public class SitterController {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	@Autowired
+	private SitterDiaryService sitterDiaryService;
+	
+	@Autowired
+	private PetMainService petMainService;
 	
 	@GetMapping("/")
 	public ModelAndView getMain(HttpServletRequest request) { 
@@ -26,6 +39,13 @@ public class SitterController {
 	public ModelAndView getSitterProfile(HttpServletRequest request) {
 		
 		ModelAndView mav = new ModelAndView("wepet/client/page/sitter_profile");
+		return mav;
+	}
+	
+	@GetMapping("/sitter/unregister")
+	public ModelAndView getSitterUnregister(HttpServletRequest request) {
+		
+		ModelAndView mav = new ModelAndView("wepet/client/page/sitter_unregister");
 		return mav;
 	}
 
@@ -56,6 +76,32 @@ public class SitterController {
 		ModelAndView mav = new ModelAndView("wepet/client/page/sitter_board");
 		return mav;
 	}
+	
+	@GetMapping("/sitter/diary")
+	public ModelAndView getSitterDiary(HttpServletRequest request) {
+		
+		List sitterdiaryList = sitterDiaryService.selectAll();
+		
+		ModelAndView mav = new ModelAndView("wepet/client/page/sitter_diary");
+		mav.addObject("sitterdiaryList", sitterdiaryList);
+		
+		return mav;
+	}
+	/*
+	@GetMapping("/sitter/registform")
+	public ModelAndView getForm(HttpServletRequest request) {
+		
+		// 3단계 일시키기
+		List petMainList = petMainService.selectAll();
+		
+		// 4단계
+		ModelAndView mav = new ModelAndView("wepet/client/page/sitter_diary_regist");
+		mav.addObject("petMainList", petMainList);
+		
+		return mav;
+	}
+*/
+	
 	
 	@GetMapping("/sitter/inquiry")
 	public ModelAndView getSitterInquiry(HttpServletRequest request) {

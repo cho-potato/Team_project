@@ -68,6 +68,12 @@
               </a>
             </li>
             <li class="menu-item">
+              <a href="/sitter/diary" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-detail"></i>
+                <span>일지 관리</span>
+              </a>
+            </li>
+            <li class="menu-item">
               <a href="/sitter/inquiry" class="menu-link"> <!-- target="" -->
                 <i class="menu-icon tf-icons bx bx-support"></i>
                 <span>문의 내역</span>

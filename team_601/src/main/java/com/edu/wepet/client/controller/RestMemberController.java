@@ -34,7 +34,9 @@ public class RestMemberController {
 	@Autowired
 	private NaverLogin naverLogin;
 	
-
+	
+	
+	
 	//로그인 폼에서 사용할 sns 인증화면의 링크 주소 요청을 처리(구글)
 	 @GetMapping("/member/authform/google")
 	public ResponseEntity<Message> getGoogleUrl(HttpServletRequest request){
@@ -62,6 +64,7 @@ public class RestMemberController {
 		return entity;
 	} 
 	 
+	 
 		//로그인 폼 -네이버
 	 @GetMapping("/member/authform/naver")
 	public ResponseEntity<Message> getNaverUrl(HttpServletRequest request){
@@ -74,4 +77,8 @@ public class RestMemberController {
 		ResponseEntity entity=new ResponseEntity<Message>(message, HttpStatus.OK);
 		return entity;
 	} 
+	 
+	 
+	
+	
 }

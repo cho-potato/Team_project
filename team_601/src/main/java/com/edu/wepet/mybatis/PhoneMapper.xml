@@ -6,10 +6,13 @@
 	select * from phone where phone_idx = #{phone_idx}
 </select>
 
-<select id="selectByMember" resultType="Phone" parameterType="String">
+<select id="selectByMember" resultType="Phone" parameterType="Member">
 	select * from phone where member_idx =#{member_idx}
 </select>
 
-
+<insert id="insert" parameterType="Phone">
+	insert into phone(phone_idx, member_idx, phoneNumber)
+	values(seq_phone.nextval, #{member.member_idx}, #{phoneNumber})
+</insert>
 
 </mapper>

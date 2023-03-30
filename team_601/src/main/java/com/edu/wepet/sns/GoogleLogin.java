@@ -5,8 +5,6 @@ import org.slf4j.LoggerFactory;
 
 import lombok.Data;
 
-
-
 @Data
 public class GoogleLogin {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());

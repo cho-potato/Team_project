@@ -20,8 +20,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.edu.wepet.domain.Email;
 import com.edu.wepet.domain.Member;
+import com.edu.wepet.domain.Phone;
 import com.edu.wepet.domain.Sns;
+import com.edu.wepet.model.member.EmailService;
 import com.edu.wepet.model.member.MemberService;
 import com.edu.wepet.model.member.SnsService;
 import com.edu.wepet.sns.GoogleLogin;
@@ -33,6 +36,7 @@ import com.edu.wepet.sns.NaverOAuthToken;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 //회원과 관련된 요청을 처리하는 하위 컨트롤러
 @Controller
@@ -55,6 +59,9 @@ public class MemberController {
 	private SnsService snsService;
 
 	
+	@Autowired
+	private EmailService emailService;
+	
 	
 	//일반회원 조회
 	@GetMapping("/member/list")
@@ -71,6 +78,7 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView("wepet/client/login/loginform");
 		return mav;
 	}
+	
 	
 	
 	//구글 로그인 콜백.
@@ -156,13 +164,13 @@ public class MemberController {
 		}
 		
 		String id =(String)userMap.get("id");
-		String email =(String)userMap.get("email");
-		boolean verified_email = (Boolean)userMap.get("verified_email");
+		//String email =(String)userMap.get("email");
+		//boolean verified_email = (Boolean)userMap.get("verified_email");
 		String nickname =(String)userMap.get("name");
 		
 		logger.info("id " +id);
-		logger.info("email " +email);
-		logger.info("verified_email " + verified_email);
+		
+		
 		
 		//멤버에 대한 고유 id 조회 -- dao
 		Member member = memberService.selectById(id);
@@ -171,19 +179,26 @@ public class MemberController {
 		if(member==null) {
 		//이미 디비에 이 회원의 식별고유 id가 존재할 경우
 		//로그인을 처리해주자 (서비스의 regist 후 세션에 담자)
-			//snsservice를 만들어야 함
-
-			Sns sns= snsService.selectByType("google");
-			logger.info("sns에 들어있는 sns_idx" + sns);
+			//snsservice를 만들어야 
 			
 			member = new Member();
+			Email email = new Email();
+			email.setEmailaddr((String)userMap.get("email"));
+			
+			Sns sns= snsService.selectByType("google");
+			logger.info("sns에 들어있는 sns_idx" + sns);
+
 			member.setSns(sns);
+			member.setEmail(email);
 			member.setId(id);
 			member.setNickname(nickname);
 			
 			//회원정보없으니까 -가입시키기
- 			memberService.regist(member);		
+ 			memberService.regist(member);
+ 			
 		}
+		
+		
 		
 		//나머지는 로그인을 그냥 가면 된다.	
 		session.setAttribute("member", member);
@@ -296,17 +311,17 @@ public class MemberController {
 		//이미 디비에 이 회원의 식별고유 id가 존재할 경우
 		//로그인을 처리해주자 (서비스의 regist 후 세션에 담자)
 			//snsservice를 만들어야 함
-
+			
 			Sns sns= snsService.selectByType("kakao");
 			logger.info("sns에 들어있는 sns_idx" + sns);
-			
-			member = new Member();
+
 			member.setSns(sns);
 			member.setId(id);
 			member.setNickname(nickname);
 			
 			//회원정보없으니까 -가입시키기
- 			memberService.regist(member);		
+ 			memberService.regist(member);
+ 			
 		}
 		
 		//나머지는 로그인을 그냥 가면 된다.	
@@ -410,12 +425,14 @@ public class MemberController {
 		//내부의 json은 맵으로 처리
 		Map response=(Map)userMap.get("response");
 		String id = (String)response.get("id");
+		//String em = (String)response.get("email");
 		String nickname = (String)response.get("name");
-		String mobile = (String)response.get("mobile");
+		//String mobile = (String)response.get("mobile");
 		
 		logger.info("id" + id);
 		logger.info("nickname is " + nickname);
-		logger.info("mobile is " + mobile);
+
+		//logger.info("mobile is " + mobile);
 
 
 		//멤버에 대한 고유 id 조회 -- dao
@@ -426,17 +443,27 @@ public class MemberController {
 		//이미 디비에 이 회원의 식별고유 id가 존재할 경우
 		//로그인을 처리해주자 (서비스의 regist 후 세션에 담자)
 			//snsservice를 만들어야 함
+			
+			member = new Member();
+			
+			Email email = new Email();
+			email.setEmailaddr((String)response.get("email"));
+			
+			Phone phone = new Phone();
+			phone.setPhoneNumber((String)response.get("mobile"));
 
 			Sns sns= snsService.selectByType("naver");
 			logger.info("sns에 들어있는 sns_idx" + sns);
-			
-			member = new Member();
+
 			member.setSns(sns);
+			member.setEmail(email);
+			member.setPhone(phone);
 			member.setId(id);
 			member.setNickname(nickname);
 			
 			//회원정보없으니까 -가입시키기
- 			memberService.regist(member);		
+ 			memberService.regist(member);
+ 			
 		}
 		
 		//나머지는 로그인을 그냥 가면 된다.	

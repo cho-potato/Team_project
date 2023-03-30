@@ -7,7 +7,7 @@
 <title>메인페이지</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<!-- Header Start -->
-	<%@ include file="../inc/gardener/inc/header_link.jsp"%>
+	<%-- <%@ include file="../inc/gardener/inc/header_link.jsp"%> --%>
 	<!-- Header End -->
 	
 	<!--  sidebar-inc-->

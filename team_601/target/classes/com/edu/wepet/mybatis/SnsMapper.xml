@@ -4,7 +4,7 @@
 
 
 	<select id="selectByMember" resultType="Sns" parameterType="int">
-		select * from sns where member_idx = #{member_idx}
+		select * from sns where sns_idx = #{sns_idx}
 	</select>
 
 

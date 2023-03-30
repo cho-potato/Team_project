@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<!-- Header Start -->
-	<%@ include file="../inc/gardener/inc/header_link.jsp"%>
+	<%-- <%@ include file="../inc/gardener/inc/header_link.jsp"%> 이거 땜에 date 안먹어서 주석처리--%>
 	<!-- Header End -->
 	
 	<!--  sidebar-inc-->

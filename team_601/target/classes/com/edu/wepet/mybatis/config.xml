@@ -9,13 +9,24 @@
 	<typeAlias type="com.edu.wepet.domain.Email" alias="Email"/>
 	<typeAlias type="com.edu.wepet.domain.Phone" alias="Phone"/>
 	<typeAlias type="com.edu.wepet.domain.Sns" alias="Sns"/>
+	<typeAlias type="com.edu.wepet.domain.SitterApply" alias="SitterApply"/>
+	<typeAlias type="com.edu.wepet.domain.PetSitter" alias="PetSitter"/>
+	<typeAlias type="com.edu.wepet.domain.PetMain" alias="PetMain"/>
+	<typeAlias type="com.edu.wepet.domain.CertCategory" alias="CertCategory"/>
+	<typeAlias type="com.edu.wepet.domain.Certificate" alias="Certificate"/>
+	<typeAlias type="com.edu.wepet.domain.SitterDiary" alias="SitterDiary"/>
+
 </typeAliases>
- 
+
   <mappers>
 	<mapper resource="com/edu/wepet/mybatis/AdminMapper.xml" />
 	<mapper resource="com/edu/wepet/mybatis/MemberMapper.xml" />
 	<mapper resource="com/edu/wepet/mybatis/EmailMapper.xml" />
 	<mapper resource="com/edu/wepet/mybatis/PhoneMapper.xml" />
 	<mapper resource="com/edu/wepet/mybatis/SnsMapper.xml" />
+	<mapper resource="com/edu/wepet/mybatis/SitterApplyMapper.xml" />
+	<mapper resource="com/edu/wepet/mybatis/PetsitterMapper.xml" />
+	<mapper resource="com/edu/wepet/mybatis/SitterCertCategoryMapper.xml" />
+	<mapper resource="com/edu/wepet/mybatis/SitterCertificateMapper.xml" />
   </mappers>
 </configuration>

@@ -42,7 +42,7 @@
 <script src="/resources/admin/plugins/moment/moment.min.js"></script>
 <script src="/resources/admin/plugins/fullcalendar/main.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="/resources/admin/dist/js/demo.js"></script>
+<!-- <script src="/resources/admin/dist/js/demo.js"></script> -->
 <!-- Page specific script -->
 
 

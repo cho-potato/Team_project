@@ -7,10 +7,14 @@
 	select * from phone where email_idx = #{email_idx}
 </select>
 
-<select id="selectByMember" resultType="Email" parameterType="String">
+<select id="selectByMember" resultType="Email" parameterType="int">
 	select * from email where member_idx=#{member_idx}
 </select>
 
+<insert id="insert" parameterType="Email">
+	insert into email(email_idx, member_idx, emailaddr)
+	values(seq_email.nextval, #{member.member_idx}, #{emailaddr}) 
+</insert>
 
 
 </mapper>
